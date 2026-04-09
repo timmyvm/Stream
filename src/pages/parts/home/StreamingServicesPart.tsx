@@ -27,7 +27,7 @@ export function StreamingServicesPart() {
           Watch from your favourites
         </h2>
       </div>
-      <div className="overflow-x-auto mb-2 pt-2">
+      <div className="overflow-x-auto mb-2 pt-2 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
         <div className="flex flex-row gap-3 w-max">
           {SERVICE_ORDER.map((slug) => {
             const service = STREAMING_SERVICES[slug];
