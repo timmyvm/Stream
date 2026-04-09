@@ -1,4 +1,6 @@
 [build]
+auto_cache_mounts = false
+
 [[build.cache_mounts]]
 path = "node_modules/.vite"
 cache_key = "vite-cache"
