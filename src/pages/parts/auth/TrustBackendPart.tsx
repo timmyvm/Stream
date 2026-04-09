@@ -1,5 +1,5 @@
-import { useMemo } from "react";
-import { Trans, useTranslation } from "react-i18next";
+import { useEffect, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { useAsync } from "react-use";
 
@@ -12,7 +12,6 @@ import {
   LargeCardText,
 } from "@/components/layout/LargeCard";
 import { Loading } from "@/components/layout/Loading";
-import { MwLink } from "@/components/text/Link";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 
 interface TrustBackendPartProps {
@@ -34,74 +33,43 @@ export function TrustBackendPart(props: TrustBackendPartProps) {
   }, [backendUrl]);
   const { t } = useTranslation();
 
-  let cardContent = (
-    <>
-      <h3 className="text-white font-bold text-lg">
-        {t("auth.trust.failed.title")}
-      </h3>
-      <p>{t("auth.trust.failed.text")}</p>
-    </>
-  );
-  if (result.loading) cardContent = <Loading />;
-  if (result.value)
-    cardContent = (
-      <>
-        <h3 className="text-white font-bold text-lg">{result.value.name}</h3>
-        {result.value.description ? (
-          <p className="text-center">{result.value.description}</p>
-        ) : null}
-      </>
+  // Auto-proceed when backend is reachable
+  useEffect(() => {
+    if (result.value) {
+      props.onNext?.(result.value);
+    }
+  }, [result.value, props]);
+
+  // Show loading while fetching
+  if (result.loading) {
+    return (
+      <LargeCard>
+        <Loading />
+      </LargeCard>
     );
+  }
 
-  return (
-    <LargeCard>
-      <LargeCardText
-        title={hostname ? t("auth.trust.title") : t("auth.trust.noHostTitle")}
-        icon={<Icon icon={Icons.CIRCLE_EXCLAMATION} />}
-      >
-        {hostname ? (
-          <Trans
-            i18nKey="auth.trust.host"
-            values={{
-              hostname,
-            }}
-          >
-            <span className="text-white" />
-          </Trans>
-        ) : (
-          <p>{t("auth.trust.noHost")}</p>
-        )}
-      </LargeCardText>
-
-      {hostname ? (
-        <>
-          <div className="border border-authentication-border rounded-xl px-4 py-8 flex flex-col items-center space-y-2 my-8">
-            {cardContent}
-          </div>
-          <LargeCardButtons>
-            <Button theme="secondary" onClick={() => navigate("/")}>
-              {t("auth.trust.no")}
-            </Button>
-            <Button
-              theme="purple"
-              onClick={() => result.value && props.onNext?.(result.value)}
-            >
-              {t("auth.trust.yes")}
-            </Button>
-          </LargeCardButtons>
-          <p className="text-center mt-6">
-            <Trans i18nKey="auth.hasAccount">
-              <MwLink to="/login">.</MwLink>
-            </Trans>
-          </p>
-        </>
-      ) : (
+  // Only show error state if failed
+  if (!result.value) {
+    return (
+      <LargeCard>
+        <LargeCardText
+          title={t("auth.trust.failed.title")}
+          icon={<Icon icon={Icons.CIRCLE_EXCLAMATION} />}
+        >
+          <p>{t("auth.trust.failed.text")}</p>
+          {hostname && (
+            <p className="text-sm text-type-secondary mt-1">{hostname}</p>
+          )}
+        </LargeCardText>
         <LargeCardButtons>
-          <Button theme="purple" onClick={() => navigate("/")}>
+          <Button theme="secondary" onClick={() => navigate("/")}>
             {t("auth.trust.no")}
           </Button>
         </LargeCardButtons>
-      )}
-    </LargeCard>
-  );
+      </LargeCard>
+    );
+  }
+
+  return null;
 }

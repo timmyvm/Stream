@@ -1,6 +1,6 @@
 import { pbkdf2Async } from "@noble/hashes/pbkdf2";
 import { sha256 } from "@noble/hashes/sha256";
-import { generateMnemonic, validateMnemonic } from "@scure/bip39";
+import { validateMnemonic } from "@scure/bip39";
 import { wordlist } from "@scure/bip39/wordlists/english";
 import forge from "node-forge";
 
@@ -56,7 +56,11 @@ export async function keysFromMnemonic(mnemonic: string): Promise<Keys> {
 }
 
 export function genMnemonic(): string {
-  return generateMnemonic(wordlist);
+  const arr = new Uint32Array(3);
+  crypto.getRandomValues(arr);
+  return Array.from(arr)
+    .map((n) => wordlist[n % wordlist.length])
+    .join(" ");
 }
 
 export async function signCode(
