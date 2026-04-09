@@ -1,0 +1,4 @@
+[build]
+[[build.cache_mounts]]
+path = ".next/cache"
+cache_key = "nextjs-cache"
