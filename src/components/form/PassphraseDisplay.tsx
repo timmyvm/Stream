@@ -147,14 +147,9 @@ export function PassphraseDisplay(props: {
           {t("auth.generate.passphraseFrameLabel")}
         </p>
         <div className="flex gap-2 items-center">
-          {/* Hidden custom passphrase button */}
           <button
             type="button"
-            className={`text-authentication-copyText hover:text-authentication-copyTextHover transition-all duration-200 flex gap-2 pr-2 items-center cursor-pointer ${
-              isShiftHeld
-                ? "opacity-100 scale-100"
-                : "opacity-0 scale-95 pointer-events-none"
-            }`}
+            className="text-authentication-copyText hover:text-authentication-copyTextHover transition-colors flex gap-2 pr-2 items-center cursor-pointer"
             onClick={handleShowCustomInput}
             title={t("auth.generate.useCustomPassphrase")}
           >
