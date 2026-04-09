@@ -57,82 +57,67 @@ export function AdsPart(): JSX.Element | null {
           adContentUrl.length >= 5 && ad2LinkIsValid && ad2ImageIsProvided;
 
         return (
-          <>
-            <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center w-full items-center md:items-start">
-              {showAd1 ? (
-                <div className="rounded-xl bg-background-main hover:scale-[1.02] max-w-[16rem] md:max-w-[22rem] transition-all duration-300 md:flex-1 relative group">
-                  <div className="bg-opacity-10 bg-buttons-purple rounded-xl border-2 border-buttons-purple border-opacity-30 hover:border-opacity-70 hover:shadow-lg hover:shadow-buttons-purple/20">
-                    {" "}
-                    <button
-                      onClick={dismissAd}
-                      type="button"
-                      className="absolute z-20 -top-2 -right-2 w-6 h-6 bg-mediaCard-hoverBackground rounded-full flex items-center justify-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      aria-label="Dismiss ad"
-                    >
-                      <Icon
-                        className="text-xs font-semibold text-type-secondary"
-                        icon={Icons.X}
-                      />
-                    </button>
-                    <a href={adContentUrl[1]} className="block">
-                      <div className="overflow-hidden rounded-t-xl">
-                        <img
-                          src={adContentUrl[2]}
-                          alt="ad banner"
-                          className="w-full h-auto transition-transform duration-300"
-                        />
-                      </div>
-                      <p className="text-xs text-type-dimmed text-center py-2 transition-colors duration-300 group-hover:text-type-secondary">
-                        <span>{adContentUrl[3]}</span>
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              ) : null}
-              {showAd2 ? (
-                <div className="rounded-xl bg-background-main hover:scale-[1.02] max-w-[16rem] md:max-w-[20rem] transition-all duration-300 md:flex-1 relative group">
-                  <div className="bg-opacity-10 bg-buttons-purple rounded-xl border-2 border-buttons-purple border-opacity-30 hover:border-opacity-70 hover:shadow-lg hover:shadow-buttons-purple/20">
-                    <button
-                      onClick={dismissAd}
-                      type="button"
-                      className="absolute z-20 -top-2 -right-2 w-6 h-6 bg-mediaCard-hoverBackground rounded-full flex items-center justify-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                      aria-label="Dismiss ad"
-                    >
-                      <Icon
-                        className="text-xs font-semibold text-type-secondary"
-                        icon={Icons.X}
-                      />
-                    </button>
-                    <a href={adContentUrl[4]} className="block">
-                      <div className="overflow-hidden rounded-t-xl">
-                        <img
-                          src={adContentUrl[5]}
-                          alt="ad banner"
-                          className="w-full h-auto transition-transform duration-300"
-                        />
-                      </div>
-                      <p className="text-xs text-type-dimmed text-center py-2 transition-colors duration-300 group-hover:text-type-secondary">
-                        <span>{adContentUrl[6]}</span>
-                      </p>
-                    </a>
-                  </div>
-                </div>
-              ) : null}
-            </div>
-            {adContentUrl[0] !== "null" && (
-              <div>
-                <p className="text-xs text-type-dimmed text-center pt-2 mx-4">
-                  <a
-                    href="https://discord.gg/wmbWfk4SGy"
-                    target="_blank"
-                    rel="noreferrer"
+          <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center w-full items-center md:items-start">
+            {showAd1 ? (
+              <div className="rounded-xl bg-background-main hover:scale-[1.02] max-w-[16rem] md:max-w-[22rem] transition-all duration-300 md:flex-1 relative group">
+                <div className="bg-opacity-10 bg-buttons-purple rounded-xl border-2 border-buttons-purple border-opacity-30 hover:border-opacity-70 hover:shadow-lg hover:shadow-buttons-purple/20">
+                  {" "}
+                  <button
+                    onClick={dismissAd}
+                    type="button"
+                    className="absolute z-20 -top-2 -right-2 w-6 h-6 bg-mediaCard-hoverBackground rounded-full flex items-center justify-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    aria-label="Dismiss ad"
                   >
-                    {adContentUrl[0]}
+                    <Icon
+                      className="text-xs font-semibold text-type-secondary"
+                      icon={Icons.X}
+                    />
+                  </button>
+                  <a href={adContentUrl[1]} className="block">
+                    <div className="overflow-hidden rounded-t-xl">
+                      <img
+                        src={adContentUrl[2]}
+                        alt="ad banner"
+                        className="w-full h-auto transition-transform duration-300"
+                      />
+                    </div>
+                    <p className="text-xs text-type-dimmed text-center py-2 transition-colors duration-300 group-hover:text-type-secondary">
+                      <span>{adContentUrl[3]}</span>
+                    </p>
                   </a>
-                </p>
+                </div>
               </div>
-            )}
-          </>
+            ) : null}
+            {showAd2 ? (
+              <div className="rounded-xl bg-background-main hover:scale-[1.02] max-w-[16rem] md:max-w-[20rem] transition-all duration-300 md:flex-1 relative group">
+                <div className="bg-opacity-10 bg-buttons-purple rounded-xl border-2 border-buttons-purple border-opacity-30 hover:border-opacity-70 hover:shadow-lg hover:shadow-buttons-purple/20">
+                  <button
+                    onClick={dismissAd}
+                    type="button"
+                    className="absolute z-20 -top-2 -right-2 w-6 h-6 bg-mediaCard-hoverBackground rounded-full flex items-center justify-center md:opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    aria-label="Dismiss ad"
+                  >
+                    <Icon
+                      className="text-xs font-semibold text-type-secondary"
+                      icon={Icons.X}
+                    />
+                  </button>
+                  <a href={adContentUrl[4]} className="block">
+                    <div className="overflow-hidden rounded-t-xl">
+                      <img
+                        src={adContentUrl[5]}
+                        alt="ad banner"
+                        className="w-full h-auto transition-transform duration-300"
+                      />
+                    </div>
+                    <p className="text-xs text-type-dimmed text-center py-2 transition-colors duration-300 group-hover:text-type-secondary">
+                      <span>{adContentUrl[6]}</span>
+                    </p>
+                  </a>
+                </div>
+              </div>
+            ) : null}
+          </div>
         );
       })()}
     </div>

@@ -10,7 +10,6 @@ import { useNotifications } from "@/components/overlays/notificationsModal";
 import { Lightbar } from "@/components/utils/Lightbar";
 import { useAuth } from "@/hooks/auth/useAuth";
 import { BlurEllipsis } from "@/pages/layouts/SubPageLayout";
-import { conf } from "@/setup/config";
 import { useBannerSize } from "@/stores/banner";
 import { usePreferencesStore } from "@/stores/preferences";
 
@@ -143,19 +142,6 @@ export function Navigation(props: NavigationProps) {
               >
                 <BrandPill clickable header />
               </Link>
-              <a
-                href={conf().DISCORD_LINK}
-                target="_blank"
-                rel="noreferrer"
-                className="text-xl text-white tabbable rounded-full backdrop-blur-lg"
-              >
-                <IconPatch
-                  icon={Icons.DISCORD}
-                  clickable
-                  downsized
-                  navigation
-                />
-              </a>
               {!enableLowPerformanceMode &&
                 (window.location.pathname !== "/discover" ? (
                   <a

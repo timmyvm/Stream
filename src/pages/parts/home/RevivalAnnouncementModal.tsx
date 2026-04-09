@@ -13,10 +13,7 @@ export function RevivalAnnouncementModal() {
   const modal = useModal(MODAL_ID);
 
   useEffect(() => {
-    if (process.env.NODE_ENV !== "production") return;
-    if (!localStorage.getItem(DISMISSED_KEY)) {
-      modal.show();
-    }
+    // Revival announcement disabled
   }, [modal]);
 
   const handleClose = useCallback(() => {
@@ -39,7 +36,7 @@ export function RevivalAnnouncementModal() {
               <Flare.Child className="pointer-events-auto relative">
                 <div className="flex justify-between items-center mb-4">
                   <h2 className="text-xl font-bold text-white">
-                    P-Stream is Back
+                    T-Stream is Back
                   </h2>
                   <button
                     type="button"
@@ -51,7 +48,7 @@ export function RevivalAnnouncementModal() {
                 </div>
                 <div className="space-y-4 text-base text-type-secondary">
                   <p className="text-white font-bold border-l-2 border-white pl-3">
-                    This is a fork of the original P-Stream. XP Technologies
+                    This is a fork of the original T-Stream. XP Technologies
                     holds no ownership over the original project and makes no
                     claim to it.
                   </p>
@@ -63,7 +60,7 @@ export function RevivalAnnouncementModal() {
                   <p>
                     The XP Technologies team has taken on the responsibility of
                     continuing their legacy. We are committed to keeping
-                    P-Stream <strong className="text-white">open source</strong>{" "}
+                    T-Stream <strong className="text-white">open source</strong>{" "}
                     and{" "}
                     <strong className="text-white">completely ad-free</strong>.
                   </p>

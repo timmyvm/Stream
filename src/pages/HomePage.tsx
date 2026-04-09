@@ -26,6 +26,7 @@ import { MediaItem } from "@/utils/mediaTypes";
 import { Button } from "./About";
 import { AdsPart } from "./parts/home/AdsPart";
 import { RevivalAnnouncementModal } from "./parts/home/RevivalAnnouncementModal";
+import { StreamingServicesPart } from "./parts/home/StreamingServicesPart";
 import { SupportBar } from "./parts/home/SupportBar";
 
 function useSearch(search: string) {
@@ -197,6 +198,13 @@ export function HomePage() {
 
       {/* User Content */}
       {!search && renderHomeSections()}
+
+      {/* Streaming services */}
+      {!search && (
+        <WideContainer>
+          <StreamingServicesPart />
+        </WideContainer>
+      )}
 
       {/* Under user content */}
       <WideContainer ultraWide classNames="!px-3 md:!px-9">

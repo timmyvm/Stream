@@ -10,12 +10,10 @@ import { getRoomStatuses } from "@/backend/player/status";
 import { UserAvatar } from "@/components/Avatar";
 import { Icon, Icons } from "@/components/Icon";
 import { Spinner } from "@/components/layout/Spinner";
-import { useModal } from "@/components/overlays/Modal";
 import { Transition } from "@/components/utils/Transition";
 import { useAuth } from "@/hooks/auth/useAuth";
 import { useBackendUrl } from "@/hooks/auth/useBackendUrl";
 import { useIsDesktopApp } from "@/hooks/useIsDesktopApp";
-import { conf } from "@/setup/config";
 import { useAuthStore } from "@/stores/auth";
 import { usePreferencesStore } from "@/stores/preferences";
 
@@ -78,18 +76,6 @@ function DropdownLink(props: {
     >
       {props.icon ? <Icon icon={props.icon} className="text-xl" /> : null}
       {props.children}
-    </GoToLink>
-  );
-}
-
-function CircleDropdownLink(props: { icon: Icons; href: string }) {
-  return (
-    <GoToLink
-      href={props.href}
-      onClick={() => window.scrollTo(0, 0)}
-      className="tabbable w-11 h-11 rounded-full bg-dropdown-contentBackground text-dropdown-text hover:text-white transition-colors duration-100 flex justify-center items-center"
-    >
-      <Icon className="text-2xl" icon={props.icon} />
     </GoToLink>
   );
 }
@@ -210,7 +196,6 @@ function WatchPartyInputLink() {
 export function LinksDropdown(props: { children: React.ReactNode }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
-  const revivalModal = useModal("revival-announcement");
   const deviceName = useAuthStore((s) => s.account?.deviceName);
   const seed = useAuthStore((s) => s.account?.seed);
   const bufferSeed = useMemo(
@@ -320,23 +305,6 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
           <DropdownLink href="/watch-history" icon={Icons.CLOCK}>
             {t("home.watchHistory.sectionTitle")}
           </DropdownLink>
-          {process.env.NODE_ENV === "development" ? (
-            <DropdownLink href="/dev" icon={Icons.COMPRESS}>
-              {t("navigation.menu.development")}
-            </DropdownLink>
-          ) : null}
-          <DropdownLink href="/about" icon={Icons.CIRCLE_QUESTION}>
-            {t("navigation.menu.about")}
-          </DropdownLink>
-          <DropdownLink
-            onClick={() => {
-              revivalModal.show();
-              setOpen(false);
-            }}
-            icon={Icons.RISING_STAR}
-          >
-            P-Stream Revival
-          </DropdownLink>
           {!enableLowPerformanceMode && (
             <DropdownLink href="/discover" icon={Icons.RISING_STAR}>
               {t("navigation.menu.discover")}
@@ -352,20 +320,6 @@ export function LinksDropdown(props: { children: React.ReactNode }) {
               {t("navigation.menu.logout")}
             </DropdownLink>
           ) : null}
-          <Divider />
-          <div className="my-4 flex justify-center items-center gap-4">
-            {conf().GITHUB_LINK && (
-              <CircleDropdownLink
-                href={conf().GITHUB_LINK}
-                icon={Icons.GITHUB}
-              />
-            )}
-            <CircleDropdownLink
-              href={conf().DISCORD_LINK}
-              icon={Icons.DISCORD}
-            />
-            <CircleDropdownLink href="/support" icon={Icons.SUPPORT} />
-          </div>
         </div>
       </Transition>
     </div>

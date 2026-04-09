@@ -42,6 +42,7 @@ import { OnboardingExtensionPage } from "@/pages/onboarding/OnboardingExtension"
 import { OnboardingProxyPage } from "@/pages/onboarding/OnboardingProxy";
 import { PasPage } from "@/pages/Pas";
 import { RegisterPage } from "@/pages/Register";
+import { StreamingServicePage } from "@/pages/streaming/StreamingServicePage";
 import { SupportPage } from "@/pages/Support";
 import { WatchHistory } from "@/pages/watchHistory/WatchHistory";
 import { Layout } from "@/setup/Layout";
@@ -168,6 +169,10 @@ function App() {
           />
           <Route path="/browse/:query?" element={<HomePage />} />
           <Route path="/" element={<HomePage />} />
+          <Route
+            path="/streaming/:service"
+            element={<StreamingServicePage />}
+          />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/about" element={<AboutPage />} />
