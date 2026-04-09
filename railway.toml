@@ -1,4 +1,4 @@
 [build]
 [[build.cache_mounts]]
-path = ".next/cache"
-cache_key = "nextjs-cache"
+path = "node_modules/.vite"
+cache_key = "vite-cache"
