@@ -105,7 +105,7 @@ export const usePreferencesStore = create(
       febboxKey:
         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NzU1NzkxNjgsIm5iZiI6MTc3NTU3OTE2OCwiZXhwIjoxODA2NjgzMTg4LCJkYXRhIjp7InVpZCI6MTU5MTIzMiwidG9rZW4iOiIyZTY0NmM1Mzk2MWY1ZDM2YmZiYmZmZTVmZTRiOGI2YyJ9fQ.cQpfNLKj5BmgsHS5nWUTlk6kFyCmzBeM9DVwLHbh4zA",
       febboxUseMp4: false,
-      debridToken: null,
+      debridToken: "BPIINJLB7SITTIZGFXFAR2PSLUO6OYAVLVHGOPB6SKN7IJ4B4BVA",
       debridService: "realdebrid",
       tidbKey: null,
       enableLowPerformanceMode: false,
@@ -303,12 +303,19 @@ export const usePreferencesStore = create(
     })),
     {
       name: "__MW::preferences",
-      version: 1,
+      version: 2,
       migrate(persistedState: any, fromVersion: number) {
         if (fromVersion < 1) {
           if (!persistedState.febboxKey) {
             persistedState.febboxKey =
               "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NzU1NzkxNjgsIm5iZiI6MTc3NTU3OTE2OCwiZXhwIjoxODA2NjgzMTg4LCJkYXRhIjp7InVpZCI6MTU5MTIzMiwidG9rZW4iOiIyZTY0NmM1Mzk2MWY1ZDM2YmZiYmZmZTVmZTRiOGI2YyJ9fQ.cQpfNLKj5BmgsHS5nWUTlk6kFyCmzBeM9DVwLHbh4zA";
+          }
+        }
+        if (fromVersion < 2) {
+          if (!persistedState.debridToken) {
+            persistedState.debridToken =
+              "BPIINJLB7SITTIZGFXFAR2PSLUO6OYAVLVHGOPB6SKN7IJ4B4BVA";
+            persistedState.debridService = "realdebrid";
           }
         }
         return persistedState;
