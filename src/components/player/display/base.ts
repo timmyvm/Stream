@@ -408,8 +408,8 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
         emit("loading", false);
       }
 
-      // Attempt autoplay if this was an autoplay transition (startAt = 0)
-      if (shouldAutoplayAfterLoad && startAt === 0 && videoElement) {
+      // Attempt autoplay whenever a source loads
+      if (shouldAutoplayAfterLoad && videoElement) {
         shouldAutoplayAfterLoad = false; // Reset the flag
         // Try to play - this will work on most platforms, but iOS may block it
         const playPromise = videoElement.play();
@@ -638,7 +638,7 @@ export function makeVideoElementDisplayInterface(): DisplayInterface {
       emit("loading", true);
       startAt = ops.startAt;
       // Set autoplay flag if starting from beginning (indicates autoplay transition)
-      shouldAutoplayAfterLoad = ops.startAt === 0;
+      shouldAutoplayAfterLoad = true;
       setSource();
     },
     changeQuality(newAutomaticQuality, newPreferredQuality) {
