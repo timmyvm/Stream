@@ -1,4 +1,8 @@
-import { Fetcher, makeSimpleProxyFetcher } from "@p-stream/providers";
+import {
+  Fetcher,
+  makeSimpleProxyFetcher,
+  setM3U8ProxyUrl,
+} from "@p-stream/providers";
 
 import { sendExtensionRequest } from "@/backend/extension/messaging";
 import { getApiToken, setApiToken } from "@/backend/helpers/providerApi";
@@ -64,7 +68,10 @@ async function fetchButWithApiTokens(
 }
 
 export function setupM3U8Proxy() {
-  // v2 providers handle M3U8 proxying via proxiedFetcher automatically
+  const proxyUrl = getLoadbalancedM3U8ProxyUrl();
+  if (proxyUrl) {
+    setM3U8ProxyUrl(proxyUrl);
+  }
 }
 
 export function makeLoadBalancedSimpleProxyFetcher() {

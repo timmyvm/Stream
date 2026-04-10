@@ -12,7 +12,17 @@
       "Bash(grep -vE \"^\\(import|export|from|type|const|let|var|function|return|class|async|await|string|number|boolean|object|array|null|undefined|true|false|default|module|require|resolve|reject|error|data|name|url|id|type|path|key|value|text|html|body|head|title|meta|link|script|style|div|span|img|src|href|class|target|rel|content|method|status|headers|response|request|fetch|then|catch|finally|use|get|set|new|this|self|window|document|global|process|console|log|warn|info|debug|error\\)$\")",
       "Bash(rm -rf /tmp/package /tmp/movie-web-providers-2.4.13.tgz)",
       "Bash(pnpm install:*)",
-      "Bash(grep -v \"^$\")"
+      "Bash(grep -v \"^$\")",
+      "Bash(openssl rand:*)",
+      "Bash(git pull:*)",
+      "Bash(sed -i '' 's/\"passphraseLabel\": \"12-Word passphrase\"/\"passphraseLabel\": \"Passphrase\"/' src/assets/locales/en.json)",
+      "Bash(sed -i '' 's/\"passphraseLabel\": \"Your 12-word passphrase\"/\"passphraseLabel\": \"Your passphrase\"/' src/assets/locales/en.json)",
+      "Bash(node -e \"const p = require\\('/Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.cjs'\\); console.log\\(Object.keys\\(p\\).join\\(', '\\)\\)\")",
+      "Bash(pnpm remove:*)",
+      "Bash(pnpm add:*)",
+      "Bash(pnpm info:*)",
+      "Bash(node -e \"const p = require\\('./node_modules/@p-stream/providers/lib/index.cjs'\\); console.log\\(typeof p.labelToLanguageCode\\)\")",
+      "Bash(pnpm eslint:*)"
     ]
   }
 }

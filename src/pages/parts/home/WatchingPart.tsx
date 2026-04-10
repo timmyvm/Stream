@@ -76,7 +76,22 @@ export function WatchingPart({
   const selectedSortOption =
     sortOptions.find((opt) => opt.id === sortBy) || sortOptions[0];
 
-  if (sortedProgressItems.length === 0) return null;
+  if (sortedProgressItems.length === 0) {
+    return (
+      <div className="relative">
+        <SectionHeading
+          title={t("home.continueWatching.sectionTitle")}
+          icon={Icons.CLOCK}
+        />
+        <div className="flex flex-col items-center justify-center py-12 text-center">
+          <Icon icon={Icons.CLOCK} className="text-4xl text-type-dimmed mb-3" />
+          <p className="text-type-secondary text-sm">
+            Nothing here yet — start watching something!
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative">

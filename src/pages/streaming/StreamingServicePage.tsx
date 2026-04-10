@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
 
+import { Icon, Icons } from "@/components/Icon";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { MediaCard } from "@/components/media/MediaCard";
 import { MediaGrid } from "@/components/media/MediaGrid";
@@ -137,6 +138,7 @@ export function StreamingServicePage() {
   const { showModal } = useOverlayStack();
   const [tab, setTab] = useState<Tab>("movie");
   const [page, setPage] = useState(1);
+  const sentinelRef = useRef<HTMLDivElement>(null);
 
   const service = STREAMING_SERVICES[serviceSlug];
 
@@ -151,6 +153,26 @@ export function StreamingServicePage() {
     page,
     enabled: !!service,
   });
+
+  // Infinite scroll via IntersectionObserver
+  const loadMore = useCallback(() => {
+    if (!isLoading && hasMore) {
+      setPage((p) => p + 1);
+    }
+  }, [isLoading, hasMore]);
+
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) loadMore();
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [loadMore]);
 
   const handleShowDetails = (item: MediaItem) => {
     showModal("details", {
@@ -180,11 +202,22 @@ export function StreamingServicePage() {
         <title>Watch from {service.name} - T-Stream</title>
       </Helmet>
       <WideContainer>
+        {/* Back button */}
+        <button
+          type="button"
+          onClick={() => navigate(-1)}
+          className="flex items-center gap-2 text-type-secondary hover:text-type-emphasis transition-colors mb-6 mt-4 group"
+        >
+          <Icon
+            icon={Icons.ARROW_LEFT}
+            className="text-sm transition-transform group-hover:-translate-x-1"
+          />
+          <span className="text-sm">Back</span>
+        </button>
+
         {/* Header */}
-        <div className="flex items-center gap-4 mb-8 mt-4">
-          <button type="button" onClick={() => navigate(-1)}>
-            <ServiceBadge service={service} />
-          </button>
+        <div className="flex items-center gap-4 mb-8">
+          <ServiceBadge service={service} />
           <h1 className="text-3xl font-bold text-type-emphasis">
             Watch from {service.name}
           </h1>
@@ -238,16 +271,13 @@ export function StreamingServicePage() {
               ))}
             </MediaGrid>
 
-            {hasMore && (
-              <div className="flex justify-center mt-10">
-                <button
-                  type="button"
-                  disabled={isLoading}
-                  onClick={() => setPage((p) => p + 1)}
-                  className="px-8 py-3 rounded-full bg-buttons-toggle text-white font-medium hover:opacity-90 transition-opacity disabled:opacity-50"
-                >
-                  {isLoading ? "Loading..." : "Load more"}
-                </button>
+            {/* Infinite scroll sentinel */}
+            <div ref={sentinelRef} className="h-8 mt-4" />
+
+            {/* Loading indicator for subsequent pages */}
+            {isLoading && page > 1 && (
+              <div className="flex justify-center py-8">
+                <div className="w-6 h-6 rounded-full border-2 border-type-logo border-t-transparent animate-spin" />
               </div>
             )}
           </>
