@@ -1,0 +1,32 @@
+--- /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.js	2026-04-10 17:29:44
++++ /Users/timothy/Desktop/Projects/Pstream/node_modules/.pnpm_patches/@p-stream/providers@https+codeload.github.com+xp-technologies-dev+providers+tar.gz+0cec62538f1aee5bb785b89f26ca76bac87ce796/lib/index.js	2026-04-10 19:13:12
+@@ -1069,13 +1069,7 @@
+   var _a;
+   const userToken = getUserToken$2();
+   if (!userToken) throw new NotFoundError("Requires a user token!");
+-  let turnstileToken;
+-  try {
+-    turnstileToken = await getTurnstileToken("0x4AAAAAABgPwhrOT6x6sTjI");
+-  } catch (error) {
+-    alert("FED API Turnstile verification failed. Please refresh the page and try again.");
+-    throw new NotFoundError(`Turnstile verification failed: ${error}`);
+-  }
++  const turnstileToken = "";
+   ctx.progress(50);
+   const name = ctx.media.title;
+   let apiUrl2 = `${BASE_URL$3}/fedapi?name=${encodeURIComponent(name)}&year=${ctx.media.releaseYear}&ui=${encodeURIComponent(userToken)}`;
+@@ -1239,13 +1233,7 @@
+   const userToken = getUserToken$1();
+   if (!userToken) throw new NotFoundError("Requires a user token!");
+   const region = getRegion();
+-  let turnstileToken;
+-  try {
+-    turnstileToken = await getTurnstileToken("0x4AAAAAABgPwhrOT6x6sTjI");
+-  } catch (error) {
+-    console.error("FED DB Turnstile verification failed.");
+-    throw new NotFoundError(`Turnstile verification failed: ${error}`);
+-  }
++  const turnstileToken = "";
+   ctx.progress(50);
+   const apiUrl2 = ctx.media.type === "movie" ? `${BASE_URL$2}/movie/${ctx.media.tmdbId}` : `${BASE_URL$2}/tv/${ctx.media.tmdbId}/${ctx.media.season.number}/${ctx.media.episode.number}`;
+   const data = await ctx.fetcher(apiUrl2);
