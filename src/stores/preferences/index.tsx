@@ -102,7 +102,8 @@ export const usePreferencesStore = create(
       embedOrder: [],
       enableEmbedOrder: false,
       proxyTmdb: false,
-      febboxKey: null,
+      febboxKey:
+        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE3NzU1NzkxNjgsIm5iZiI6MTc3NTU3OTE2OCwiZXhwIjoxODA2NjgzMTg4LCJkYXRhIjp7InVpZCI6MTU5MTIzMiwidG9rZW4iOiIyZTY0NmM1Mzk2MWY1ZDM2YmZiYmZmZTVmZTRiOGI2YyJ9fQ.cQpfNLKj5BmgsHS5nWUTlk6kFyCmzBeM9DVwLHbh4zA",
       febboxUseMp4: false,
       debridToken: null,
       debridService: "realdebrid",
