@@ -16,7 +16,7 @@
     "lint:fix": "eslint --fix --ext .tsx,.ts src",
     "lint:report": "eslint --ext .tsx,.ts --output-file eslint_report.json --format json src",
     "preinstall": "npx -y only-allow pnpm",
-    "postinstall": "patch -p0 -N node_modules/@p-stream/providers/lib/index.js patches/@p-stream__providers.patch || true"
+    "postinstall": "patch -p1 -N patches/@p-stream__providers.patch || true"
   },
   "browserslist": {
     "production": [
