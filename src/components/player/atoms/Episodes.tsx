@@ -94,10 +94,15 @@ function EpisodeItem({
             <div className="flex items-center gap-2">
               {isAired && (
                 <>
-                  <button
-                    type="button"
+                  <div
+                    role="button"
+                    tabIndex={0}
                     onClick={(e) => onToggleFavorite(episode.id, e)}
-                    className="p-1.5 rounded-full hover:bg-white/20 transition-colors"
+                    onKeyDown={(e) =>
+                      e.key === "Enter" &&
+                      onToggleFavorite(episode.id, e as any)
+                    }
+                    className="p-1.5 rounded-full hover:bg-white/20 transition-colors cursor-pointer"
                     title={t("player.menus.episodes.markAsFavorite")}
                   >
                     <Icon
@@ -106,12 +111,16 @@ function EpisodeItem({
                       }
                       className="h-8 w-8 text-white/80"
                     />
-                  </button>
+                  </div>
                   {!isActive && (
-                    <button
-                      type="button"
+                    <div
+                      role="button"
+                      tabIndex={0}
                       onClick={(e) => onToggleWatch(episode.id, e)}
-                      className="p-1.5 rounded-full hover:bg-white/20 transition-colors"
+                      onKeyDown={(e) =>
+                        e.key === "Enter" && onToggleWatch(episode.id, e as any)
+                      }
+                      className="p-1.5 rounded-full hover:bg-white/20 transition-colors cursor-pointer"
                       title={
                         isWatched
                           ? t("player.menus.episodes.markAsUnwatched")
@@ -122,7 +131,7 @@ function EpisodeItem({
                         icon={isWatched ? Icons.EYE_SLASH : Icons.EYE}
                         className="h-4 w-4 text-white/80"
                       />
-                    </button>
+                    </div>
                   )}
                 </>
               )}
