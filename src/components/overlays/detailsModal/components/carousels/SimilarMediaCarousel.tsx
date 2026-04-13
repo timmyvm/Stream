@@ -3,8 +3,6 @@ import { useTranslation } from "react-i18next";
 
 import { TMDBContentTypes } from "@/backend/metadata/types/tmdb";
 import { MediaCard, MediaCardSkeleton } from "@/components/media/MediaCard";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { CarouselNavButtons } from "@/pages/discover/components/CarouselNavButtons";
 import { useSimilarMedia } from "@/pages/discover/hooks/useSimilarMedia";
 import { useOverlayStack } from "@/stores/interface/overlayStack";
 import { MediaItem } from "@/utils/mediaTypes";
@@ -19,7 +17,6 @@ export function SimilarMediaCarousel({
   mediaType,
 }: SimilarMediaCarouselProps) {
   const { t } = useTranslation();
-  const { isMobile } = useIsMobile();
   const { showModal } = useOverlayStack();
   const carouselRef = useRef<HTMLDivElement>(null);
   const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({
@@ -119,13 +116,6 @@ export function SimilarMediaCarousel({
           <div className="md:w-12" />
         </div>
 
-        {/* Navigation Buttons */}
-        {!isMobile && (
-          <CarouselNavButtons
-            categorySlug="similar"
-            carouselRefs={carouselRefs}
-          />
-        )}
       </div>
     </div>
   );

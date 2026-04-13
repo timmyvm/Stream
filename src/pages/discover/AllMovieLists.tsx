@@ -12,8 +12,6 @@ import { Icon, Icons } from "@/components/Icon";
 import { WideContainer } from "@/components/layout/WideContainer";
 import { MediaCard } from "@/components/media/MediaCard";
 import { Heading1 } from "@/components/utils/Text";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { CarouselNavButtons } from "@/pages/discover/components/CarouselNavButtons";
 import { SubPageLayout } from "@/pages/layouts/SubPageLayout";
 import { useDiscoverStore } from "@/stores/discover";
 import { useOverlayStack } from "@/stores/interface/overlayStack";
@@ -30,8 +28,6 @@ export function DiscoverMore() {
   const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
   const navigate = useNavigate();
   const { lastView } = useDiscoverStore();
-  const { isMobile } = useIsMobile();
-
   useEffect(() => {
     const fetchCuratedLists = async () => {
       try {
@@ -172,12 +168,6 @@ export function DiscoverMore() {
                 ))}
                 <div className="md:w-12" />
               </div>
-              {!isMobile && (
-                <CarouselNavButtons
-                  categorySlug={list.listSlug}
-                  carouselRefs={carouselRefs}
-                />
-              )}
             </div>
           </div>
         ))}

@@ -1,4 +1,13 @@
 {
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ':*)",
+      "Bash(pnpm lint:fix)",
+      "WebSearch",
+      "Bash(curl -s -I \"https://torrentio.strem.fun/manifest.json\")",
+      "Bash(pkill -f \"vite\")"
+    ]
+  },
   "enabledPlugins": {
     "superpowers@claude-plugins-official": true
   }

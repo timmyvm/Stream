@@ -20,16 +20,15 @@ export function StreamingServicesPart() {
 
   return (
     <div>
-      <div className="flex items-center justify-between ml-2 md:ml-8 mt-2">
-        <div className="flex flex-col pl-2 lg:pl-[68px]">
+      <div className="flex items-center justify-between mt-2">
+        <div className="flex flex-col">
           <h2 className="text-2xl cursor-default font-bold text-white md:text-2xl pl-0 text-balance">
             Watch from your favourites
           </h2>
         </div>
       </div>
-      <div className="relative overflow-hidden carousel-container md:pb-4">
-        <div className="grid grid-flow-col auto-cols-max gap-4 pt-0 overflow-x-scroll scrollbar-none rounded-xl overflow-y-hidden md:pl-8 md:pr-8">
-          <div className="lg:w-12" />
+      <div className="relative overflow-hidden carousel-container-narrow md:pb-4">
+        <div className="grid grid-flow-col auto-cols-max gap-4 pt-0 overflow-x-scroll scrollbar-none rounded-xl overflow-y-hidden">
           {SERVICE_ORDER.map((slug) => {
             const service = STREAMING_SERVICES[slug];
             return (
@@ -70,7 +69,6 @@ export function StreamingServicesPart() {
               </button>
             );
           })}
-          <div className="lg:w-12" />
         </div>
       </div>
     </div>

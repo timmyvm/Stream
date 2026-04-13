@@ -1,11 +1,9 @@
 import React, { useRef } from "react";
 
 import { MediaCard } from "@/components/media/MediaCard";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import type { DiscoverMedia } from "@/pages/discover/types/discover";
 import { MediaItem } from "@/utils/mediaTypes";
 
-import { CarouselNavButtons } from "./CarouselNavButtons";
 import { usePersonalRecommendations } from "../hooks/usePersonalRecommendations";
 
 interface PersonalRecommendationsCarouselProps {
@@ -46,7 +44,6 @@ export function PersonalRecommendationsCarousel({
   carouselRefs,
   onShowDetails,
 }: PersonalRecommendationsCarouselProps) {
-  const { isMobile } = useIsMobile();
   const isScrollingRef = useRef(false);
   const browser = !!window.chrome;
 
@@ -134,12 +131,6 @@ export function PersonalRecommendationsCarousel({
           <div className="lg:w-12" />
         </div>
 
-        {!isMobile && (
-          <CarouselNavButtons
-            categorySlug={categorySlug}
-            carouselRefs={carouselRefs}
-          />
-        )}
       </div>
     </div>
   );

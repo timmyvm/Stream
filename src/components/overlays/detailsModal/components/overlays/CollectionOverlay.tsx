@@ -8,8 +8,6 @@ import { Icon, Icons } from "@/components/Icon";
 import { MediaCard } from "@/components/media/MediaCard";
 import { UserIcons } from "@/components/UserIcon";
 import { Flare } from "@/components/utils/Flare";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { CarouselNavButtons } from "@/pages/discover/components/CarouselNavButtons";
 import { useBookmarkStore } from "@/stores/bookmarks";
 import { useOverlayStack } from "@/stores/interface/overlayStack";
 import { MediaItem } from "@/utils/mediaTypes";
@@ -26,7 +24,6 @@ function SimpleCarousel({
   onShowDetails: _onShowDetails,
   categorySlug = "collection",
 }: SimpleCarouselProps) {
-  const { isMobile } = useIsMobile();
   const carouselRef = useRef<HTMLDivElement>(null);
   const carouselRefs = useRef<{ [key: string]: HTMLDivElement | null }>({
     [categorySlug]: null,
@@ -66,13 +63,6 @@ function SimpleCarousel({
         <div className="md:w-12" />
       </div>
 
-      {/* Navigation Buttons */}
-      {!isMobile && (
-        <CarouselNavButtons
-          categorySlug={categorySlug}
-          carouselRefs={carouselRefs}
-        />
-      )}
     </div>
   );
 }

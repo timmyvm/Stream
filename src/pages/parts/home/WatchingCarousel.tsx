@@ -7,8 +7,6 @@ import { Dropdown, OptionItem } from "@/components/form/Dropdown";
 import { Icon, Icons } from "@/components/Icon";
 import { SectionHeading } from "@/components/layout/SectionHeading";
 import { WatchedMediaCard } from "@/components/media/WatchedMediaCard";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { CarouselNavButtons } from "@/pages/discover/components/CarouselNavButtons";
 import { useProgressStore } from "@/stores/progress";
 import { shouldShowProgress } from "@/stores/progress/utils";
 import { SortOption, sortMediaItems } from "@/utils/mediaSorting";
@@ -49,8 +47,6 @@ export function WatchingCarousel({
   useEffect(() => {
     localStorage.setItem("__MW::watchingSort", sortBy);
   }, [sortBy]);
-
-  const { isMobile } = useIsMobile();
 
   const itemsLength = useProgressStore((state) => {
     return Object.entries(state.items).filter(
@@ -231,12 +227,6 @@ export function WatchingCarousel({
           <div className="lg:w-12" />
         </div>
 
-        {!isMobile && (
-          <CarouselNavButtons
-            categorySlug={categorySlug}
-            carouselRefs={carouselRefs}
-          />
-        )}
       </div>
     </>
   );

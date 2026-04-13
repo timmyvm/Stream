@@ -22,7 +22,29 @@
       "Bash(pnpm add:*)",
       "Bash(pnpm info:*)",
       "Bash(node -e \"const p = require\\('./node_modules/@p-stream/providers/lib/index.cjs'\\); console.log\\(typeof p.labelToLanguageCode\\)\")",
-      "Bash(pnpm eslint:*)"
+      "Bash(pnpm eslint:*)",
+      "Bash(grep -o \"BASE_URL.\\\\{0,5\\\\}=.\\\\{0,60\\\\}\" /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.umd.cjs)",
+      "Bash(grep -o \".\\\\{0,100\\\\}getUserToken.\\\\{0,100\\\\}\" /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.umd.cjs)",
+      "Bash(grep -o \".\\\\{0,50\\\\}getUserToken\\\\b.\\\\{0,100\\\\}\" /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.umd.cjs)",
+      "Bash(grep -o \".\\\\{0,80\\\\}userToken =.\\\\{0,80\\\\}\" /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.umd.cjs)",
+      "Bash(grep -o \"getUserToken\\\\$[0-9] = function[^}]*}\\\\|getUserToken = function[^}]*}\" /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.umd.cjs)",
+      "Bash(grep -o \".\\\\{0,200\\\\}getUserToken\\\\$2 = \\(\\) =>\" /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.umd.cjs)",
+      "Bash(grep -o \"getUserToken\\\\$2 = \\(\\) => [^;]*\" /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.umd.cjs)",
+      "Bash(pnpm build:*)",
+      "Bash(python3 -c ':*)",
+      "Bash(npx patch-package:*)",
+      "Read(//tmp/**)",
+      "Bash(pnpm patch:*)",
+      "Bash(python3)",
+      "Bash(pnpm patch-commit:*)",
+      "Bash(patch node_modules/@p-stream/providers/lib/index.js patches/@p-stream__providers.patch)",
+      "Bash(git -C /Users/timothy/Desktop/Projects/Pstream log --oneline)",
+      "Bash(git -C /Users/timothy/Desktop/Projects/Pstream remote -v)",
+      "Bash(git -C /Users/timothy/Desktop/Projects/Pstream show 15bf791f:package.json)",
+      "Bash(git clone:*)",
+      "Bash(jobs)",
+      "Bash(md5 /Users/timothy/Desktop/Projects/oldpstream/node_modules/@p-stream/providers/lib/index.js)",
+      "Bash(md5 /Users/timothy/Desktop/Projects/Pstream/node_modules/@p-stream/providers/lib/index.js)"
     ]
   }
 }

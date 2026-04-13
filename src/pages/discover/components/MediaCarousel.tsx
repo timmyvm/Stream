@@ -8,7 +8,6 @@ import { Dropdown, OptionItem } from "@/components/form/Dropdown";
 import { Icon, Icons } from "@/components/Icon";
 import { MediaCard } from "@/components/media/MediaCard";
 import { Flare } from "@/components/utils/Flare";
-import { useIsMobile } from "@/hooks/useIsMobile";
 import {
   DiscoverContentType,
   MediaType,
@@ -19,7 +18,6 @@ import { useDiscoverStore } from "@/stores/discover";
 import { useProgressStore } from "@/stores/progress";
 import { MediaItem } from "@/utils/mediaTypes";
 
-import { CarouselNavButtons } from "./CarouselNavButtons";
 
 interface ContentConfig {
   type: DiscoverContentType;
@@ -86,7 +84,6 @@ export function MediaCarousel({
   const { t } = useTranslation();
   const { width: windowWidth } = useWindowSize();
   const { setLastView } = useDiscoverStore();
-  const { isMobile } = useIsMobile();
   const browser = !!window.chrome;
 
   // State for selected options
@@ -547,12 +544,6 @@ export function MediaCarousel({
           <div className="lg:w-12" />
         </div>
 
-        {!isMobile && (
-          <CarouselNavButtons
-            categorySlug={categorySlug}
-            carouselRefs={carouselRefs}
-          />
-        )}
       </div>
     </div>
   );

@@ -14,8 +14,6 @@ import { EditGroupModal } from "@/components/overlays/EditGroupModal";
 import { useModal } from "@/components/overlays/Modal";
 import { UserIcon, UserIcons } from "@/components/UserIcon";
 import { Flare } from "@/components/utils/Flare";
-import { useIsMobile } from "@/hooks/useIsMobile";
-import { CarouselNavButtons } from "@/pages/discover/components/CarouselNavButtons";
 import { useBookmarkStore } from "@/stores/bookmarks";
 import { useGroupOrderStore } from "@/stores/groupOrder";
 import { useProgressStore } from "@/stores/progress";
@@ -114,8 +112,6 @@ export function BookmarksCarousel({
   const modifyBookmarksByGroup = useBookmarkStore(
     (s) => s.modifyBookmarksByGroup,
   );
-
-  const { isMobile } = useIsMobile();
 
   const bookmarksLength = useBookmarkStore(
     (state) => Object.keys(state.bookmarks).length,
@@ -437,12 +433,6 @@ export function BookmarksCarousel({
                   <div className="lg:w-12" />
                 </div>
 
-                {!isMobile && (
-                  <CarouselNavButtons
-                    categorySlug={section.group || "bookmarks"}
-                    carouselRefs={carouselRefs}
-                  />
-                )}
               </div>
             </div>
           );
@@ -563,12 +553,6 @@ export function BookmarksCarousel({
                 <div className="lg:w-12" />
               </div>
 
-              {!isMobile && (
-                <CarouselNavButtons
-                  categorySlug={categorySlug}
-                  carouselRefs={carouselRefs}
-                />
-              )}
             </div>
           </div>
         );
